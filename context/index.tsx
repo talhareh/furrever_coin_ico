@@ -1,5 +1,5 @@
 'use client';
-
+import { bnbTestnet } from "../testnet/bnbTestnet";
 import { wagmiAdapter, projectId } from "../config";
 import { createAppKit, CreateAppKit } from "@reown/appkit";
 import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
@@ -24,15 +24,16 @@ const metadata = {name: 'appkit-example',
 const modal = createAppKit({
     adapters: [wagmiAdapter],
     projectId: projectId,
-    networks: [mainnet, opBNBTestnet],
+    networks: [mainnet, opBNBTestnet, bnbTestnet],
     features: {
         analytics: true
     },
     themeMode: 'light',
     themeVariables: {
-      '--w3m-accent': '#e6b608',
+      '--w3m-accent': '#e6b608', // Button background color
       '--w3m-font-family': 'Rubik, sans-serif',
       '--w3m-font-size-master': '12px',
+      '--w3m-border-radius-master': '12px',
     }
 })
 
