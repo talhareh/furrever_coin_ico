@@ -37,7 +37,7 @@ export default function Header() {
           <p className="font-rubik ml-1 text-white-900">FURREVERCoin</p>
         </div>
         <div className="flex items-center">
-          <WalletConnect />
+        <appkit-button />
           <MobileMenu isAdmin={isOwner} />
         </div>
       </header>
@@ -71,7 +71,7 @@ export default function Header() {
               )}
             </div>
 
-            <WalletConnect />
+            <appkit-button />
           </div>
         </div>
       </header>

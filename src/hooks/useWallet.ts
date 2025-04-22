@@ -28,16 +28,7 @@ const useWallet = () => {
       
       // Show success toast only when wallet is newly connected
       if (isConnected && !prevConnectedRef.current) {
-        toast.success('Wallet connected successfully!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored",
-          style: { backgroundColor: '#013D43', color: 'white' }
-        });
+        
       }
     } else {
       setAddress('');

@@ -279,7 +279,7 @@ export default function PresaleCard() {
           <PurchaseForm />
           
           <div className="mt-4">
-            <WalletConnect />
+          <appkit-button />
           </div>
         </>
       )}

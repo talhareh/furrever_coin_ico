@@ -104,7 +104,7 @@ export default function MobileMenu({ isAdmin = false }: MobileMenuProps) {
             
             {/* Wallet connect button */}
             <div className="mt-6">
-              <WalletConnect />
+            <appkit-button />
             </div>
           </div>
         </div>
