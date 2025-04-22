@@ -7,14 +7,15 @@ import useWalletStore from '@/store/walletStore';
 import { BSC_CHAIN_ID } from '@/config/contract';
 import { bscChain } from '@/config/chains';
 import { toast } from 'react-toastify';
+import { useAppKitAccount } from "@reown/appkit/react";
+import { useAppKitNetwork } from "@reown/appkit/react";
 
 const useWallet = () => {
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAppKitAccount();
   const { connect } = useConnect();
   const { disconnect } = useDisconnect();
-  const chainId = useChainId();
   const { switchChain } = useSwitchChain();
-  
+  const { chainId } = useAppKitNetwork()
   const { setAddress, setIsConnected, setChainId, setIsCorrectNetwork } = useWalletStore();
 
   // Ref to track previous connection state

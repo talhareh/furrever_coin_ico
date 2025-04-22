@@ -13,13 +13,16 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ethers } from 'ethers';
 import { CONTRACT_ADDRESSES } from '@/config/contract';
-
+import { useAppKitAccount } from "@reown/appkit/react";
+import { useAppKitNetwork } from "@reown/appkit/react";
 export default function PurchaseForm() {
-  const { address } = useAccount();
-  const { isConnected, isCorrectNetwork } = useWalletStore();
+  
+  const { address, isConnected, caipAddress, status, embeddedWalletInfo } =
+  useAppKitAccount();
+  const { isCorrectNetwork } = useWalletStore();
   const { currentStage } = usePresaleStore();
   const { buyTokens, buyTokensDirectBNB, isPending } = usePresale();
-  
+  const { caipNetwork, caipNetworkId, chainId, switchNetwork } = useAppKitNetwork()
   const [selected, setSelected] = useState<PaymentMethod>('BNB');
   const [inputAmount, setInputAmount] = useState<string>('');
   const [outputAmount, setOutputAmount] = useState<string>('0');
@@ -178,21 +181,6 @@ export default function PurchaseForm() {
       });
       return;
     }
-
-    if (!isCorrectNetwork) {
-      toast.error('Please switch to Binance Smart Chain Testnet', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-        style: { backgroundColor: '#013D43', color: 'white' }
-      });
-      return;
-    }
-
     if (!inputAmount || parseFloat(inputAmount) <= 0) {
       toast.error('Please enter a valid amount', {
         position: "top-right",
@@ -320,7 +308,7 @@ export default function PurchaseForm() {
           </div>
         </div>
       </div>
-      
+   
       {/* Error message */}
       {error && (
         <p className="text-xs text-center mt-2 text-red-600">{error}</p>
@@ -330,9 +318,10 @@ export default function PurchaseForm() {
       {success && (
         <p className=" text-center mt-4 text-green-600 p-3">{success}</p>
       )}
-      
+     
       {/* Buy Tokens Button */}
       <div className="mt-6 w-full">
+      
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -349,7 +338,7 @@ export default function PurchaseForm() {
                 theme: "colored",
                 style: { backgroundColor: '#013D43', color: 'white' }
               });
-            } else if (!isCorrectNetwork) {
+            } else if (chainId !== 97) {
               console.log("Wrong network, showing toast");
               toast.error('Please switch to Binance Smart Chain Testnet', {
                 position: "top-right",

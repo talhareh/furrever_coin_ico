@@ -1,5 +1,5 @@
 'use client';
-import { bnbTestnet } from "../testnet/bnbTestnet";
+import { bscTestnet } from "@/config/chains";
 import { wagmiAdapter, projectId } from "../config";
 import { createAppKit, CreateAppKit } from "@reown/appkit";
 import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
@@ -24,7 +24,7 @@ const metadata = {name: 'appkit-example',
 const modal = createAppKit({
     adapters: [wagmiAdapter],
     projectId: projectId,
-    networks: [mainnet, opBNBTestnet, bnbTestnet],
+    networks: [mainnet, opBNBTestnet, bscTestnet],
     features: {
         analytics: true
     },
