@@ -9,6 +9,7 @@ import useWalletStore from '@/store/walletStore';
 import { formatBigInt } from '@/lib/utils';
 import { ethers } from 'ethers';
 import { CONTRACT_ADDRESSES } from '@/config/contract';
+import AppKitButton from '../ui/AppKitButton';
 
 export default function PresaleCard() {
   const { 
@@ -278,9 +279,10 @@ export default function PresaleCard() {
           
           <PurchaseForm />
           
-          <div className="mt-4">
-          <appkit-button />
-          </div>
+          <div className="mt-4 flex justify-center items-center w-full">
+              <AppKitButton />
+            </div>
+
         </>
       )}
     </div>

@@ -2,7 +2,7 @@
 
 import { wagmiAdapter, projectId } from "../config";
 import { createAppKit, CreateAppKit } from "@reown/appkit";
-import { mainnet, arbitrum } from '@reown/appkit/networks';
+import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, {type ReactNode} from 'react';
 
@@ -24,14 +24,16 @@ const metadata = {name: 'appkit-example',
 const modal = createAppKit({
     adapters: [wagmiAdapter],
     projectId: projectId,
-    networks: [mainnet, arbitrum],
+    networks: [mainnet, opBNBTestnet],
     features: {
-        analytics: true,
-        email: true,
-        socials: ['google', 'x', 'apple', 'discord', 'github'],
-        emailShowWallets: true
+        analytics: true
     },
-    themeMode: 'light'
+    themeMode: 'light',
+    themeVariables: {
+      '--w3m-accent': '#e6b608',
+      '--w3m-font-family': 'Rubik, sans-serif',
+      '--w3m-font-size-master': '12px',
+    }
 })
 
 interface ContextProducerProps {

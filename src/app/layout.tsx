@@ -5,6 +5,10 @@ import Providers from '@/components/Providers';
 import "./globals.css";
 import ContextProvider from "../../context";
 import { headers } from "next/headers"; 
+import { createAppKit } from "@reown/appkit";
+import { wagmiAdapter } from "../../config";
+import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
+import { useAppKitProvider } from "@reown/appkit/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +24,14 @@ export const metadata: Metadata = {
   title: "FURREVER - The Superhero of Crypto",
   description: "Join the FURREVER presale and be part of the next big thing in crypto!",
 };
+
+export const appKit = createAppKit({
+  projectId: 'YOUR_PROJECT_ID',
+  adapters: [wagmiAdapter],
+  networks: [mainnet, opBNBTestnet],
+  features: { analytics: true },
+  themeMode: 'light',
+});
 
 export default async function RootLayout({
   children,

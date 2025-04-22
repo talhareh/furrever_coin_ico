@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import WalletConnect from '@/components/ui/WalletConnect';
+import AppKitButton from '../ui/AppKitButton';
 
 interface MobileMenuProps {
   isAdmin?: boolean;
@@ -104,7 +105,7 @@ export default function MobileMenu({ isAdmin = false }: MobileMenuProps) {
             
             {/* Wallet connect button */}
             <div className="mt-6">
-            <appkit-button />
+            <AppKitButton />
             </div>
           </div>
         </div>

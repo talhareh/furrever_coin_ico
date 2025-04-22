@@ -5,6 +5,7 @@ import Image from 'next/image';
 import WalletConnect from '@/components/ui/WalletConnect';
 import MobileMenu from './MobileMenu';
 import useWalletStore from '@/store/walletStore';
+import AppKitButton from '../ui/AppKitButton';
 
 export default function Header() {
   const { isOwner } = useWalletStore();
@@ -37,7 +38,7 @@ export default function Header() {
           <p className="font-rubik ml-1 text-white-900">FURREVERCoin</p>
         </div>
         <div className="flex items-center">
-        <appkit-button />
+        <AppKitButton />
           <MobileMenu isAdmin={isOwner} />
         </div>
       </header>
@@ -71,7 +72,7 @@ export default function Header() {
               )}
             </div>
 
-            <appkit-button />
+            <AppKitButton />
           </div>
         </div>
       </header>
