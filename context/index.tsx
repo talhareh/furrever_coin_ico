@@ -24,15 +24,15 @@ const metadata = {name: 'appkit-example',
 const modal = createAppKit({
     adapters: [wagmiAdapter],
     projectId: projectId,
-    networks: [mainnet, opBNBTestnet, bscTestnet],
+    networks: [bscTestnet],
     features: {
         analytics: true
     },
     themeMode: 'light',
     themeVariables: {
-      '--w3m-accent': '#e6b608', // Button background color
+      '--w3m-accent': '#FFBF00',
       '--w3m-font-family': 'Rubik, sans-serif',
-      '--w3m-font-size-master': '12px',
+      '--w3m-font-size-master': '14px',
       '--w3m-border-radius-master': '12px',
     }
 })

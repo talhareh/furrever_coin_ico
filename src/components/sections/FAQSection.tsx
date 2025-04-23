@@ -15,10 +15,10 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="bg-[#6bccd5] w-full lg:h-fit flex relative flex-col items-center  text-center pb-8">
-      <h2 id='faq' className="text-5xl md:text-7xl font-semibold text-white">FAQs</h2>
+    <div className="bg-[#6bccd5] w-full lg:h-fit flex relative flex-col items-center text-center">
+      <h2 id='faq' className="text-5xl md:text-7xl font-semibold text-white z-40">FAQs</h2>
       
-      <div className="flex w-[90%] md:w-[64%] text-[#1F2B5F] flex-col items-center mt-20">
+      <div className="flex w-[90%] z-40 md:w-[64%] text-[#1F2B5F] flex-col items-center mt-20">
         <div className='space-y-4'>
           <AccordionItem
             index={0}

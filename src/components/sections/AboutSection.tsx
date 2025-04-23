@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <div id='about' className='bg-[#6bccd5] w-full pb-4 flex flex-col items-center relative text-white'>
       {/* Cloud image */}
-      <div className="relative w-full mt-[-80px] lg:mt-[-80px] md:mt-[-60px] sm:mt-[-40px]">
+      <div className="relative w-full mt-[-26px] 2xl:mt-[-140px] xl:[-100px] lg:mt-[-78px] md:mt-[-60px] sm:mt-[-40px]">
         <img src='/assets/Clouds.svg' alt='FURREVERcoin Clouds' className='w-full'/>
       </div>
       
@@ -25,7 +25,7 @@ export default function AboutSection() {
         <img 
           src='/assets/Heart beating.svg' 
           alt='FURREVERcoin mascot' 
-          className='w-[200px] md:w-[280px] lg:w-[360px] animate-float'
+          className='w-[200px] md:w-[280px] lg:w-[360px] animate-float z-40'
         />
       </div>
       

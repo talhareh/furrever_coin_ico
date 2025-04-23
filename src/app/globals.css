@@ -59,3 +59,42 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(80px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatmobile {
+  0%, 100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-floatmobile {
+  animation: floatmobile 3s ease-in-out infinite;
+}

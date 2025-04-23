@@ -2,7 +2,7 @@
 
 export default function FooterBanner() {
   return (
-    <div className='bg-[#6bccd5] h-fit flex flex-col items-center relative z-[10] w-full pt-0 mt-[-50px]'>
+    <div className='bg-[#6bccd5] h-fit flex flex-col items-center relative z-[10] w-full pt-0 mt-[50px]'>
       <img src='/assets/Vector 19.svg' alt='FURREVERcoin' className='w-full'/>
       <div className='absolute bottom-10 right-[30%] text-white'> 
         <h2 className='text-2xl'>The best meme coin presale of 2025 is here</h2>

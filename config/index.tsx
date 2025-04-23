@@ -9,7 +9,7 @@ if (!projectId) {
     throw new Error('Project Id is not defined')
 }
 
-export const networks = [mainnet, opBNBTestnet, bscTestnet]
+export const networks = [bscTestnet]
 export const wagmiAdapter = new WagmiAdapter({
     storage: createStorage({
         storage: cookieStorage

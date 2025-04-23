@@ -34,8 +34,8 @@ export default function Header() {
       {/* Mobile Header */}
       <header className="lg:hidden flex items-center justify-between bg-[#6BCCD5] w-full px-4 p-2 text-white">
         <div className="flex items-center">
-          <Image src="/assets/Logo.svg" width={40} height={40} alt="Furrever logo" className="w-[18%]"/>
-          <p className="font-rubik ml-1 text-white-900">FURREVERCoin</p>
+          <Image src="/assets/Logo2.svg" width={40} height={40} alt="Furrever logo" className="w-[18%]"/>
+          <p className="font-rubik ml-1 font-bold text-white">FURREVERCoin</p>
         </div>
         <div className="flex items-center">
         <AppKitButton />
@@ -48,11 +48,11 @@ export default function Header() {
         <div className='w-[90%]'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center space-x-4'>
-              <Image src="/assets/Logo.svg" width={60} height={60} alt='Furrever' />
-              <h2 className='font-rubik 2xl:text-2xl 4xl:text-4xl md:text-lg'>FURREVERCoin</h2>
+              <Image src="/assets/Logo2.svg" width={60} height={60} alt='Furrever' />
+              <h2 className='font-rubik text-white font-bold 2xl:text-2xl 4xl:text-4xl md:text-xl'>FURREVERCoin</h2>
             </div>
             
-            <div className='flex justify-center lg:text-xl 2xl:text-xl 4xl:text-2xl 6xl:text-4xl items-center 3xl:space-x-8 lg:space-x-6 flex-grow text-white'>
+            <div className='flex justify-center lg:text-md 2xl:text-xl 4xl:text-2xl 6xl:text-4xl items-center 3xl:space-x-8 lg:space-x-6 flex-grow text-white'>
               <p className='cursor-pointer' onClick={scrollToBuyNow}>Buy now</p>
               <p className='cursor-pointer' onClick={scrollToAbout}>About</p>
               <p className='cursor-pointer' onClick={scrollToTokenomics}>Tokenomics</p>

@@ -22,40 +22,31 @@ export default function HeroSection() {
         <div className="relative">
           {/* Cloud image as background layer */}
           <div className="relative">
-            <Image src='/assets/Cloudtest.svg' alt='cloud' width={1400} height={1000} className='w-full'/>
+           
             
             {/* Content positioned on top of cloud */}
-            <div className='absolute top-0 left-0 w-full h-full'>
-              <div className="flex flex-col items-center w-full pt-12 pb-8">
+        
+              <div className="flex flex-col items-center w-full pt-12 pb-16">
                 {/* Presale card first on mobile */}
-                <div className="sm:w-[80%] w-[99%] mb-6">
-                  <PresaleCard />
-                </div>
-                
-                {/* Raccoon image second on mobile */}
-                <Image 
-                  src='/assets/Racoonmobile.svg' 
-                  width={300} 
-                  height={300} 
-                  className='w-[80%] max-w-[300px] mb-4' 
-                  alt='Raccoon'
-                />
-              </div>
+                <div className="sm:w-[80%] w-[99%]">
+                          <PresaleCard />
+                        </div>
+
             </div>
           </div>
           
           {/* How to Buy Section for Mobile */}
-          <div className="w-full px-4 mt-8">
+          <div className="w-full px-4">
             <HowToBuySection isMobile={true} />
           </div>
         </div>
       </div>
       
       {/* Desktop Hero Section */}
-      <div className='hidden lg:block bg-[#FFC909] w-full'>
+      <div className='hidden lg:block bg-[#FFC909] w-full pb-14'>
         <div className='relative'>
           {/* Cloud image as background layer */}
-          <div className="relative">
+          <div className="relative ">
             <Image 
               src='/assets/Cloud.svg' 
               alt='cloud' 
@@ -80,7 +71,7 @@ export default function HeroSection() {
           </div>
           
           {/* How to Buy Section for Desktop */}
-          <div className="w-full px-20 mt-20">
+          <div className="w-full px-20 -mt-20">
             <HowToBuySection isMobile={false} />
           </div>
         </div>

@@ -72,9 +72,9 @@ export default function RoadmapSection() {
   };
   
   return (
-    <section id="roadmap" className="relative flex flex-col items-center px-4 w-full py-16">
+    <section id="roadmap" className="relative flex flex-col items-center px-4 w-full py-16 mb-4">
       {/* Background cloud */}
-      <div className="absolute -top-[55%] left-0 z-0 w-full">
+      <div className="absolute dm:top-[-40%] left-0 z-10 w-full">
         <Image 
           src="/assets/Cloudroadmap.svg" 
           alt="Cloud background" 
