@@ -8,7 +8,7 @@ export default function CombinedFooter() {
       {/* Footer Banner */}
       <div className='bg-[#6bccd5] h-[80vh] sm:h-full flex flex-col items-center relative z-[10] w-full'>
         <img src='/assets/Vector 19.svg' alt='FURREVERcoin' className='w-full'/>
-        <div className='absolute bottom-10 md:right-[30%] text-white w-full md:w-auto text-center md:text-left'> 
+        <div className='absolute bottom-10 md:right-[34%] text-white w-full md:w-auto text-center md:text-left'> 
           <h2 className='text-sm'>The best meme coin presale of 2025 is here</h2>
           <h2 className='2xl:text-6xl lg:text-5xl text-xl'>Begin a new journey<br/><span> With <span className='font-bold'>FURREVERcoin</span></span>
           </h2>

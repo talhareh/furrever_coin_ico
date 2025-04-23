@@ -94,6 +94,16 @@ export default function RoadmapSection() {
             initial="enter"
             animate="center"
             exit="exit"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(event, info) => {
+              if (info.offset.x < -100) {
+                changePhase(1); // drag left
+              } else if (info.offset.x > 100) {
+                changePhase(-1); // drag right
+              }
+            }}
             className="2xl:w-[65%] lg:w-[80%] w-[95%] p-8 pb-14 bg-white rounded-3xl opacity-90 text-[#2287AA] flex flex-col items-center absolute shadow-2xl"
           >
             <h2 className="mt-4 text-2xl md:text-3xl 2xl:text-4xl font-bold md:w-[60%] text-center">

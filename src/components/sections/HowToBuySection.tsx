@@ -56,7 +56,7 @@ export default function HowToBuySection({ isMobile = false }: { isMobile?: boole
     <div className={classes.container}>
       <h2 className={classes.heading}>How to buy</h2>
 
-      <div className='flex flex-col gap-10 max-w-3xl mb-20'>
+      <div className='flex flex-col gap-10 max-w-3xl mb-26'>
         {steps.map((step, index) => (
           <div key={index}>
             <h3 className={classes.stepTitle}>{step.title}</h3>

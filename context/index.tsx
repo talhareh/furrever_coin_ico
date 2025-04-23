@@ -32,8 +32,7 @@ const modal = createAppKit({
     themeVariables: {
       '--w3m-accent': '#FFBF00',
       '--w3m-font-family': 'Rubik, sans-serif',
-      '--w3m-font-size-master': '14px',
-      '--w3m-border-radius-master': '12px',
+      '--w3m-font-size-master': '10px',
     }
 })
 

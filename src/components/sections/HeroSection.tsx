@@ -56,7 +56,7 @@ export default function HeroSection() {
             />
             
             {/* Content positioned on top of cloud */}
-            <div className='absolute top-0 left-0 w-full h-full pt-50'>
+            <div className='absolute top-0 left-0 w-full h-full pt-10'>
               <div className='flex justify-between w-full px-20 pt-20'>
                 <Image 
                   src='/assets/Racoon 1.svg' 
@@ -71,7 +71,7 @@ export default function HeroSection() {
           </div>
           
           {/* How to Buy Section for Desktop */}
-          <div className="w-full px-20 -mt-20">
+          <div className="w-full px-20 -mt-10">
             <HowToBuySection isMobile={false} />
           </div>
         </div>
