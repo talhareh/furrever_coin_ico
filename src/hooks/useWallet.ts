@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
-import { metaMaskConnector } from '@/lib/web3/connectors';
+import { metaMaskConnector, walletConnectConnector } from '@/lib/web3/connectors';
 import useWalletStore from '@/store/walletStore';
 import { BSC_CHAIN_ID } from '@/config/contract';
 import { bscChain } from '@/config/chains';
@@ -10,16 +10,40 @@ import { toast } from 'react-toastify';
 import { useAppKitAccount } from "@reown/appkit/react";
 import { useAppKitNetwork } from "@reown/appkit/react";
 
+// Helper function to detect mobile devices
+const isMobileDevice = () => {
+  return (
+    typeof window !== 'undefined' && 
+    (navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i))
+  );
+};
+
 const useWallet = () => {
   const { address, isConnected } = useAppKitAccount();
   const { connect } = useConnect();
   const { disconnect } = useDisconnect();
   const { switchChain } = useSwitchChain();
-  const { chainId } = useAppKitNetwork()
+  const { chainId } = useAppKitNetwork();
+  const [isMobile, setIsMobile] = useState(false);
   const { setAddress, setIsConnected, setChainId, setIsCorrectNetwork } = useWalletStore();
 
   // Ref to track previous connection state
   const prevConnectedRef = useRef(false);
+
+  // Check if device is mobile on component mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const mobile = isMobileDevice();
+      console.log('Device detection:', { isMobile: mobile, userAgent: navigator.userAgent });
+      setIsMobile(mobile);
+    }
+  }, []);
 
   // Update wallet store when account changes
   useEffect(() => {
@@ -53,7 +77,11 @@ const useWallet = () => {
     try {
       disconnect();
       await new Promise((resolve) => setTimeout(resolve, 100));
-      await connect({ connector: metaMaskConnector });
+      if (isMobile) {
+        await connect({ connector: walletConnectConnector });
+      } else {
+        await connect({ connector: metaMaskConnector });
+      }
     } catch (error) {
       console.error('Failed to connect wallet:', error);
       toast.error('Failed to connect wallet. Please try again.', {

@@ -1,6 +1,5 @@
 import {cookieStorage, createStorage} from 'wagmi';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
 import { bscTestnet } from "@/config/chains";
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID
 

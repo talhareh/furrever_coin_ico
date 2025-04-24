@@ -2,7 +2,7 @@
 
 import { http, createConfig } from 'wagmi';
 import { bscChain, bscTestnet } from '@/config/chains';
-import { injected, metaMask } from 'wagmi/connectors';
+import { walletConnectConnector, metaMaskConnector, injectedConnector } from './connectors';
 
 // Set up wagmi config
 export const wagmiConfig = createConfig({
@@ -11,8 +11,9 @@ export const wagmiConfig = createConfig({
     [bscTestnet.id]: http(),
   },
   connectors: [
-    metaMask(),
-    injected(),
+    metaMaskConnector,
+    walletConnectConnector,
+    injectedConnector,
   ],
 });
 

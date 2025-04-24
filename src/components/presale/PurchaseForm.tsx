@@ -323,7 +323,7 @@ export default function PurchaseForm() {
       <div className="mt-6 w-full">
       
         <button
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
             console.log("Debug button clicked");
             if (!isConnected) {
@@ -352,49 +352,55 @@ export default function PurchaseForm() {
               });
             } else {
               console.log("All good, calling handleBuy");
-              if (selected === 'BNB') {
-                console.log("Using direct BNB purchase");
-                try {
-                  setLoading(true);
-                  buyTokensDirectBNB(inputAmount)
-                    .then(tx => {
-                      console.log("Direct BNB purchase successful:", tx);
-                      setSuccess(`Successfully purchased ${outputAmount} FURR tokens!`);
-                      toast.success(`Successfully purchased ${outputAmount} FURR tokens!`, {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        theme: "colored",
-                        style: { backgroundColor: '#013D43', color: 'white' }
-                      });
-                      setInputAmount('');
-                      setOutputAmount('0');
-                    })
-                    .catch(err => {
-                      console.error("Direct BNB purchase failed:", err);
-                      toast.error(err.message || 'Failed to purchase tokens. Please try again.', {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        theme: "colored",
-                        style: { backgroundColor: '#013D43', color: 'white' }
-                      });
-                    })
-                    .finally(() => {
-                      setLoading(false);
-                    });
-                } catch (err) {
-                  console.error("Error in direct BNB purchase:", err);
-                  setLoading(false);
-                }
-              } else {
-                handleBuy();
+              try {
+                setLoading(true);
+                setError(null);
+                setSuccess('');
+                
+                // Show pending toast
+                const pendingToast = toast.loading(`Processing your purchase of ${outputAmount} FURR tokens...`, {
+                  position: "top-right",
+                });
+                
+                // Use the standard buyTokens method for all purchases
+                const tx = await buyTokens(inputAmount, selected);
+                
+                // Update the pending toast to success
+                toast.update(pendingToast, { 
+                  render: `Successfully purchased ${outputAmount} FURR tokens!`, 
+                  type: "success", 
+                  isLoading: false,
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "colored",
+                  style: { backgroundColor: '#013D43', color: 'white' }
+                });
+                
+                setSuccess(`Successfully purchased ${outputAmount} FURR tokens!`);
+                setInputAmount('');
+                setOutputAmount('0');
+              } catch (err) {
+                console.error('Purchase error:', err);
+                
+                // Show error toast
+                const errorMessage = err instanceof Error ? err.message : 'Failed to purchase tokens. Please try again.';
+                toast.error(errorMessage, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  theme: "colored",
+                  style: { backgroundColor: '#013D43', color: 'white' }
+                });
+                
+                setError(errorMessage);
+              } finally {
+                setLoading(false);
               }
             }
           }}

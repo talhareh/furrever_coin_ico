@@ -2,7 +2,6 @@
 import { bscTestnet } from "@/config/chains";
 import { wagmiAdapter, projectId } from "../config";
 import { createAppKit, CreateAppKit } from "@reown/appkit";
-import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, {type ReactNode} from 'react';
 
@@ -18,7 +17,7 @@ if (!projectId) {
 const metadata = {name: 'appkit-example', 
     description: "AppKit Example - EVM", 
     url: "https://exampleapp.com", 
-    icons: ["https://avatars.githubuserconent.com/u/37784886"]
+    icons: ["https://avatars.githubusercontent.com/u/37784886"]
 }
 
 const modal = createAppKit({

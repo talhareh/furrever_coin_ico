@@ -7,7 +7,7 @@ import ContextProvider from "../../context";
 import { headers } from "next/headers"; 
 import { createAppKit } from "@reown/appkit";
 import { wagmiAdapter } from "../../config";
-import { mainnet, opBNBTestnet } from '@reown/appkit/networks';
+import { bscChain, bscTestnet } from '@/config/chains';
 import { useAppKitProvider } from "@reown/appkit/react";
 
 const geistSans = Geist({
@@ -26,30 +26,27 @@ export const metadata: Metadata = {
 };
 
 export const appKit = createAppKit({
-  projectId: 'YOUR_PROJECT_ID',
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   adapters: [wagmiAdapter],
-  networks: [mainnet, opBNBTestnet],
+  networks: [bscChain, bscTestnet],
   features: { analytics: true },
   themeMode: 'light',
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersObj = await headers();
-  const cookies = headersObj.get('cookie')
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <Providers>
-        
           <Header />
-          <ContextProvider cookies={cookies}>
-          <main className="relative">{children}</main>
+          <ContextProvider cookies={null}>
+            {children}
           </ContextProvider>
         </Providers>
       </body>

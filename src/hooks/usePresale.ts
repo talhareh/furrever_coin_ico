@@ -109,7 +109,7 @@ const usePresale = () => {
 
   // Combined pending state
   const isPending = isPendingBNB || isPendingApprove || isPendingUSDT;
-  console.log("isPending states:", { isPendingBNB, isPendingApprove, isPendingUSDT, isPending });
+  //console.log("isPending states:", { isPendingBNB, isPendingApprove, isPendingUSDT, isPending });
 
   // Buy tokens
   const buyTokens = useCallback(async (amount: string, paymentMethod: PaymentMethod) => {
